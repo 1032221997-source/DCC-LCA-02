@@ -1,0 +1,3 @@
+gcc bully_election.c -o bully_election
+
+command to compile the code
