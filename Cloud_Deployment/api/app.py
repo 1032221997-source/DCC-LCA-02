@@ -75,14 +75,14 @@ def process(request: URLRequest):
 
     print("STEP 3: Content ready for summarization")
 
-    try:
-        summary = summarize_content(title, content)
-        print("STEP 4: Summary generated")
-    except Exception as e:
-        return {
-            "stage": "summarization",
-            "error": str(e)
-        }
+    #try:
+        #summary = summarize_content(title, content)
+        #print("STEP 4: Summary generated")
+    #except Exception as e:
+        #return {
+            #"stage": "summarization",
+            #"error": str(e)
+        #}
 
     return {
         "title": title,

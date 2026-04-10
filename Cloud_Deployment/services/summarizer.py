@@ -22,5 +22,8 @@ def summarize_content(title: str, content: str) -> str:
     """
 
     response = model.generate_content(prompt)
-    return response.text
+    if (not response.text):
+        return content[:500]
+    else:    
+        return response.text
     
