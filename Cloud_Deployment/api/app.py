@@ -39,10 +39,52 @@ def summarize(request: ContentRequest):
 #combined flow....(Scrape+summmarize)
 @app.post("/process")
 def process(request: URLRequest):
-    scraped = scrape_website(request.url)
-    summary = summarize_content(scraped["Title"], scraped["Content"])
+    print("STEP 1: Request received")
+
+    try:
+        scraped = scrape_website(request.url)
+        print("STEP 2: Scraped data:", scraped)
+    except Exception as e:
+        return {
+            "stage": "scraping",
+            "error": str(e)
+        }
+
+    # Validate scraped structure
+    if not isinstance(scraped, dict):
+        return {
+            "stage": "scraping",
+            "error": "Invalid scrape response"
+        }
+
+    if "error" in scraped:
+        return {
+            "stage": "scraping",
+            "error": scraped["error"]
+        }
+
+    # Handle key mismatches safely
+    title = scraped.get("Title") or scraped.get("title", "No title")
+    content = scraped.get("Content") or scraped.get("content", "")
+
+    if not content:
+        return {
+            "stage": "scraping",
+            "error": "No content extracted"
+        }
+
+    print("STEP 3: Content ready for summarization")
+
+    try:
+        summary = summarize_content(title, content)
+        print("STEP 4: Summary generated")
+    except Exception as e:
+        return {
+            "stage": "summarization",
+            "error": str(e)
+        }
 
     return {
-        "title": scraped["Title"],
+        "title": title,
         "summary": summary
     }
