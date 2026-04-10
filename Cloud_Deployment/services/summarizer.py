@@ -22,4 +22,5 @@ def summarize_content(title: str, content: str) -> str:
     """
 
     response = model.generate_content(prompt)
-    return response.text
+    #return response.text
+    return title
