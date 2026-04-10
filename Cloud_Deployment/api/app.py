@@ -86,5 +86,5 @@ def process(request: URLRequest):
 
     return {
         "title": title,
-        "summary": summary
+        "content": content
     }
