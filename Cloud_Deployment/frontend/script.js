@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
 
         try {
-            const response = await fetch('https://dcc-lca-02.vercel.app/process', {
+            const response = await fetch('/process', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
