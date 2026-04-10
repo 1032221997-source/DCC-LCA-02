@@ -5,7 +5,7 @@ import os
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Use the lighter model with a separate free-tier quota
-_MODEL_NAME = "gemini-1.5-flash"
+_MODEL_NAME = "gemini-2.5-flash"
 
 def summarize_content(title: str, content: str) -> str:
     model = genai.GenerativeModel(_MODEL_NAME)
