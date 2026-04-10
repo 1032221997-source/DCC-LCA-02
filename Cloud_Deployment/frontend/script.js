@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Populate results
             document.getElementById('resultTitle').textContent = data.title || 'Untitled Page';
-            document.getElementById('resultSummary').textContent = data.summary || 'No summary could be generated.';
+            document.getElementById('resultSummary').textContent = data.content || 'No content could be extracted.';
 
             // Show results
             resultsSection.classList.remove('hidden');
