@@ -1,9 +1,26 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from services.scraper import scrape_website
 from services.summarizer import summarize_content
 from models.models import URLRequest, ContentRequest
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
+@app.get("/")
+def read_root():
+    return FileResponse("frontend/index.html")
 
 @app.post("/scrape")
 def scrape(request: URLRequest):

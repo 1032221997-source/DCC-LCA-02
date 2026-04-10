@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Scraper & Summarizer</title>
+    <meta name="description" content="AI powered web scraping and web content summarization tool.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="overlay-blobs">
+        <div class="blob shape-1"></div>
+        <div class="blob shape-2"></div>
+    </div>
+    
+    <main class="container">
+        <header>
+            <h1 class="gradient-text">Nimbus NoteAI</h1>
+            <p class="subtitle">Extract and summarize web content with a single click</p>
+        </header>
+
+        <section class="input-section">
+            <form id="processForm" class="glass-panel">
+                <div class="input-group">
+                    <input type="url" id="urlInput" placeholder="https://example.com" required autocomplete="off">
+                    <button type="submit" id="submitBtn">
+                        <span class="btn-text">Summarize</span>
+                        <div class="btn-loader" style="display: none;"></div>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section id="resultsSection" class="results-container hidden">
+            <div class="glass-panel result-card">
+                <h2 id="resultTitle" class="result-title"></h2>
+                <div class="divider"></div>
+                <div class="summary-content">
+                    <p id="resultSummary"></p>
+                </div>
+            </div>
+        </section>
+
+        <div id="errorBanner" class="error-banner hidden">
+            <p id="errorMessage"></p>
+        </div>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
