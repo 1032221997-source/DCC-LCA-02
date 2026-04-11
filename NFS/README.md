@@ -40,7 +40,7 @@ sudo nano /etc/exports
 
 Add:
 ```
-/nfs/shared *(rw,sync,no_subtree_check,no_root_squash)
+/nfs/shared <server_ip>(rw,sync,no_subtree_check,no_root_squash)
 ```
 **Motto of options**:
 - `*` → allow all clients
@@ -72,7 +72,7 @@ sudo mkdir -p /mnt/nfs
 **Motto**: Create mount point (where share appears)
 
 ```bash
-sudo mount localhost:/nfs/shared /mnt/nfs
+sudo mount <server_ip>:/nfs/shared /mnt/nfs
 ```
 **Motto**: Connect to NFS share
 
